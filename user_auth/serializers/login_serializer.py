@@ -84,80 +84,80 @@ class VerifySMSSerializer(serializers.Serializer):
     verification_code = serializers.CharField()
 
 
-# class CourseSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Course
-#         fields = ['id', 'title', 'descriptions']
+class CourseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        fields = ['id', 'title', 'descriptions']
 
 
-# class DepartmentsSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Departments
-#         fields = ['id', 'title', 'is_active', 'descriptions']
+class DepartmentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Departments
+        fields = ['id', 'title', 'is_active', 'descriptions']
 
 
-# class WorkerSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Worker
-#         fields = ["id", 'user', 'departments', 'course', 'descriptions']
+class WorkerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Worker
+        fields = ["id", 'user', 'departments', 'course', 'descriptions']
 
 
-# class RoomSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Rooms
-#         fields = ['id', 'title', 'descriptions']
+class RoomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rooms
+        fields = ['id', 'title', 'descriptions']
 
 
-# class GroupSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = GroupStudent
-#         fields = ['id', 'title', 'course', 'teacher', "table", 'start_date', 'end_date', 'price', 'descriptions']
+class GroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GroupStudent
+        fields = ['id', 'title', 'course', 'teacher', "table", 'start_date', 'end_date', 'price', 'descriptions']
 
 
-# class DaySerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Day
-#         fields = ['id', 'title', 'descriptions']
+class DaySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Day
+        fields = ['id', 'title', 'descriptions']
 
 
-# class TableTypeSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = TableType
-#         fields = ['id', 'title', 'descriptions']
+class TableTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TableType
+        fields = ['id', 'title', 'descriptions']
 
 
-# class TableSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Table
-#         fields = ['id', 'start_time', 'end_time', 'room', 'type', 'descriptions']
+class TableSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Table
+        fields = ['id', 'start_time', 'end_time', 'room', 'type', 'descriptions']
 
 
-# class StudentSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Student
-#         fields = ['id', 'user', 'group', 'course', 'is_line', 'descriptions']
+class StudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Student
+        fields = ['id', 'user', 'group', 'course', 'is_line', 'descriptions']
 
 
-# #
-# class TopicsSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Topics
-#         fields = ['id', 'title', 'course', 'descriptions']
+#
+class TopicsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Topics
+        fields = ['id', 'title', 'course', 'descriptions']
 
 
-# class GroupHomeWorkSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = GroupHomeWork
-#         fields = ['id', 'group', 'topic', 'is_active', 'descriptions']
+class GroupHomeWorkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GroupHomeWork
+        fields = ['id', 'group', 'topic', 'is_active', 'descriptions']
 
 
-# class HomeWorkSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = HomeWork
-#         fields = ['id', 'groupHomeWork', 'price', 'student', 'link', 'is_active', 'descriptions']
+class HomeWorkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HomeWork
+        fields = ['id', 'groupHomeWork', 'price', 'student', 'link', 'is_active', 'descriptions']
 
 
-# class AttendanceLevelSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = AttendanceLevel
-#         fields = ['id', 'title', 'descriptions']
+class AttendanceLevelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AttendanceLevel
+        fields = ['id', 'title', 'descriptions']
