@@ -19,21 +19,21 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',  # faqat bitta marta bo‘lishi kerak
+
     # tashqi ilovalar
     'rest_framework',
     'rest_framework_simplejwt',
-    
+    'drf_yasg',
+
     # o'zim yaratgan ilovalar
     'user_auth',
-          
 ]
 
 MIDDLEWARE = [
