@@ -10,6 +10,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
+from django.shortcuts import get_object_or_404
 # maxalliy importlar
 from .make_token import *
 
@@ -17,11 +18,17 @@ from ..serializers import *
 
 
 class StudentRegisterView(APIView):
-    def get(self,request):
+    def get(self,request,id=None):
         data = {'success':True}
-        student = Student.objects.all()
-        serializer = StudentRegisterSerializer(student,many = True)
-        data['student']= serializer.data
+        if id:
+            student = get_object_or_404(Student, id=id)
+            serializer = StudentRegisterSerializer(student)
+            data['student'] = serializer.data
+        else:
+            
+            student = Student.objects.all()
+            serializer = StudentRegisterSerializer(student,many = True)
+            data['student']= serializer.data
         return Response(data=data)
     
     @swagger_auto_schema(request_body=StudentPostSerializer)
@@ -46,3 +53,27 @@ class StudentRegisterView(APIView):
             return Response(data=student_serializer_1.errors,status=status.HTTP_400_BAD_REQUEST)
         return Response(data=user_serializer.errors)
     
+
+
+    @swagger_auto_schema(request_body=StudentPostSerializer)
+    def put(self,request,id):
+        student = get_object_or_404(Student,id=id)
+        user = student.user
+        user_data = request.data.get('user')
+        student_data = request.data.get('student')
+
+        user_serializer = StudentUserSerializer(user,data= user_data)
+        student_serializerr = StudentRSerializer(student, data = student_data)
+
+        if user_serializer.is_valid(raise_exception=True) and student_serializerr.is_valid(raise_exception=True):
+            if 'password' in user_serializer.validated_data:
+                user_serializer.validated_data['password'] = make_password(user_serializer.validated_data.get('password'))
+            user_serializer.save()
+            student_serializerr.save()
+            return Response({
+                    "success":True,
+                    'user':user_serializer.data,
+                    'student':student_serializerr.data
+                })
+        return Response({"error": 'Validation fieled'},status.HTTP_400_BAD_REQUEST)
+        
