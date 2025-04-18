@@ -16,7 +16,7 @@ from .make_token import *
 from ..serializers import *
 
 
-
+# User ro'yxatga olish
 class RegisterUserApi(APIView):
     pagination_class = PageNumberPagination
 

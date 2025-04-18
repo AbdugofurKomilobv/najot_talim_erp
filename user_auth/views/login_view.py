@@ -55,20 +55,6 @@ def send_otp():
 
 
 
-class LoginApi(APIView):
-    permission_classes = [AllowAny]
-    @swagger_auto_schema(request_body=LoginSerializer)
-    def post(self,request):
-        serializer = LoginSerializer(data = request.data)
-        serializer.is_valid(raise_exception=True)
-         
-        
-        user = serializer.validated_data.get("user")
-        token = get_tokens_for_user(user)
-        token["is_admin"]= user.is_admin
-        
-
-        return Response(data=token,status=status.HTTP_200_OK)
 
 
 
@@ -96,3 +82,18 @@ class VerifySms(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+# user login qiladi
+class LoginApi(APIView):
+    permission_classes = [AllowAny]
+    @swagger_auto_schema(request_body=LoginSerializer)
+    def post(self,request):
+        serializer = LoginSerializer(data = request.data)
+        serializer.is_valid(raise_exception=True)
+         
+        
+        user = serializer.validated_data.get("user")
+        token = get_tokens_for_user(user)
+        token["is_admin"]= user.is_admin
+        
+
+        return Response(data=token,status=status.HTTP_200_OK)

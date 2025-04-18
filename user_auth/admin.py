@@ -4,7 +4,8 @@ from .models import *
 
 
 
-admin.site.register([Teacher,User,Course,Departments,GroupStudent])
+admin.site.register([Teacher,User,Course,Departments,GroupStudent,Student])
+admin.site.register([Table,Day,Rooms,TableType])
 
 
 
