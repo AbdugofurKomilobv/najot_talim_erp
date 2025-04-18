@@ -11,7 +11,7 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path('post_phone_send_otp/',PhoneSendOTP.as_view()),
-    path('post_phone_v_otp/',VerifySms.as_view()),
+    path('post_phone_verifay_otp/',VerifySms.as_view()),
     path('register/',RegisterUserApi.as_view()),
      path('token/', LoginApi.as_view(), ),
      

@@ -96,23 +96,3 @@ class VerifySms(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class RegisterUserApi(APIView):
-    pagination_class = PageNumberPagination
-
-    @swagger_auto_schema(request_body=UserSerializer)
-    def post(self, request):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            password = serializer.validated_data.get('password')
-            serializer.validated_data['password'] = make_password(password)
-            serializer.save()
-            return Response({
-                'status': True,
-                'datail': 'Account create',
-                'data': serializer.data     
-            })
-    
-    def get(self, request):
-        users = User.objects.all().order_by('-id')
-        serializer = UserSerializer(users, many=True)
-        return Response(data=serializer.data)
