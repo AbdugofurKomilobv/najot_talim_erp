@@ -38,7 +38,7 @@ class RegisterUserApi(APIView):
         serializer = UserSerializer(users, many=True)
         return Response(data=serializer.data)
 
-
+# Teacher ro'yxatdan o'tqazish
 class TeacherRegisterView(APIView):
     def get(self,request):
         data = {'success':True}
