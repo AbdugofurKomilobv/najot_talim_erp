@@ -46,6 +46,10 @@ urlpatterns = [
     path('otp/',include('user_auth.otp_urls')),
     path('register_login_user/',include('user_auth.register_login_urls')),
 
-   
-    
+
+
+    path('student_group/',include('group.group_urls')),
+    path('student_group_rooms/',include('group.rooms_urls')),
+    path('student_group_table_type/',include('group.tebletype_urls')),   
+    path('student_group_table/',include('group.table_urls')),   
 ]

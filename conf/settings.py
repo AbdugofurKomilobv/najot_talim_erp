@@ -34,6 +34,7 @@ INSTALLED_APPS = [
 
     # o'zim yaratgan ilovalar
     'user_auth',
+    'group',
 ]
 
 MIDDLEWARE = [
@@ -132,6 +133,9 @@ REST_FRAMEWORK = {
         
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    #    'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ]
 }
 SWAGGER_SETTINGS = {
    
@@ -143,6 +147,7 @@ SWAGGER_SETTINGS = {
             'description': 'JWT token kiriting. Format: Bearer <token>'
         }
     },
+    
     'USE_SESSION_AUTH':False, #bu juda muxim
 }
 

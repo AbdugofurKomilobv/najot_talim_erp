@@ -1,0 +1,1 @@
+from .tabletype import *
