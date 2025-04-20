@@ -30,17 +30,21 @@ from rest_framework_simplejwt.views import (
 )
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+   path('admin/', admin.site.urls),
     # User authentication
    
-    path('/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+   path('/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     # swagger
-     path('swagger.<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+   path('swagger.<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
-   # auth user
-    path('api/user_auth/',include('user_auth.urls')),
+   # auth user api urls
+    # path('api/',include('user_auth.urls')),
+    path('teacher/',include('user_auth.teacher_urls')),
+    path('student/',include('user_auth.student_url')),
+    path('otp/',include('user_auth.otp_urls')),
+    path('register_login/',include('user_auth.register_login_urls')),
 
    
     
