@@ -12,8 +12,34 @@ from rest_framework import status
 from django.contrib.auth.hashers import make_password
 # maxalliy importlar
 from .make_token import *
-
+from ..add_pagination import *
 from ..serializers import *
+
+
+# User ro'yxatga olish
+class RegisterUserApi(APIView):
+    pagination_class = PageNumberPagination
+
+    @swagger_auto_schema(request_body=UserSerializer)
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            password = serializer.validated_data.get('password')
+            serializer.validated_data['password'] = make_password(password)
+            serializer.save()
+            return Response({
+                'status': True,
+                'datail': 'Account create',
+                'data': serializer.data     
+            })
+    
+    def get(self, request):
+        users = User.objects.all().order_by('-id')
+        paginatior = CustomPAgination()
+        result_page = paginatior.paginate_queryset(users,request)
+        serializer = UserSerializer(users, many=True)
+        return paginatior.get_paginated_response(serializer.data)
+
 
 
 # Teacher ro'yxatdan o'tqazish

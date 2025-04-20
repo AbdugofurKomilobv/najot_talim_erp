@@ -44,7 +44,7 @@ urlpatterns = [
     path('teacher/',include('user_auth.teacher_urls')),
     path('student/',include('user_auth.student_url')),
     path('otp/',include('user_auth.otp_urls')),
-    path('register_login/',include('user_auth.register_login_urls')),
+    path('register_login_user/',include('user_auth.register_login_urls')),
 
    
     
