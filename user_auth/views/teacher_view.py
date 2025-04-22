@@ -10,19 +10,28 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
+
 # maxalliy importlar
 from .make_token import *
 from ..add_pagination import *
 from ..serializers import *
+from permissions.permissions_teacher import IsTeacherOfGroupOrAdmin
+from rest_framework.permissions import IsAdminUser,IsAuthenticated
 
 
 
 # Teacher ro'yxatdan o'tqazish
 class TeacherRegisterView(APIView):
+    permission_classes = [IsAuthenticated, IsTeacherOfGroupOrAdmin]
+
     def get(self,request):
         data = {'success':True}
+        
         teacher = Teacher.objects.all()
+   
         serializer = TeacherRegisterSerializer(teacher,many = True)
+        
+     
         data["teacher"] = serializer.data
         return Response(data=data)
 

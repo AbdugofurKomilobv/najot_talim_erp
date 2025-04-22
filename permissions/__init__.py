@@ -1,0 +1,1 @@
+from .permissions_teacher import *

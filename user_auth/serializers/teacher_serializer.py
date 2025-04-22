@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from django.contrib.auth import authenticate
+
 from ..models import *
 
 
@@ -10,7 +10,7 @@ from ..models import *
 class TeacherRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teacher
-        fields = ('id','departments','course','descriptions')
+        fields = ('id','user','departments','course','descriptions')
 
 class TeacherUserSerializer(serializers.ModelSerializer):
         is_active = serializers.BooleanField(read_only = True)
