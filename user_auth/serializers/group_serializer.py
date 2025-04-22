@@ -2,9 +2,12 @@ from rest_framework import serializers
 from ..models import *
 
 class GroupStudentSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = GroupStudent
         fields = "__all__"
+
+    
         
 class GroupTitleUpdateSerializer(serializers.ModelSerializer):
     class Meta:

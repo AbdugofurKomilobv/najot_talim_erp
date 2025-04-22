@@ -18,25 +18,19 @@ from ..serializers import *
 
 
 class StudentRegisterView(APIView):
-    def get(self,request,id=None):
+    def get(self,request):
         data = {'success':True}
-        if id:
-            student = get_object_or_404(Student, id=id)
-            serializer = StudentRegisterSerializer(student)
-            data['student'] = serializer.data
-        else:
-            
-            student = Student.objects.all()
-            serializer = StudentRegisterSerializer(student,many = True)
-            data['student']= serializer.data
-        return Response(data=data)
+        student = Student.objects.all()
+        serializer = StudentRegisterSerializer(student, many = True)
+        data['student'] = serializer.data
+        return Response(data=data,status=status.HTTP_200_OK)
     
     @swagger_auto_schema(request_body=StudentPostSerializer)
     def post(self,request):
         data = {'success':True}
         user = request.data['user']
         student = request.data['student']
-        phone_number = user['phone_number']
+        # phone_number = user['phone_number']
         user_serializer = StudentUserSerializer(data = user)
 
         if user_serializer.is_valid(raise_exception=True):
@@ -52,6 +46,19 @@ class StudentRegisterView(APIView):
                 return Response(data=data,status=status.HTTP_201_CREATED)
             return Response(data=student_serializer_1.errors,status=status.HTTP_400_BAD_REQUEST)
         return Response(data=user_serializer.errors)
+    
+
+class StudentRegisterDetailView(APIView):
+    def get(self,request,id=None):
+        data = {'success':True}
+        if id:
+            student = get_object_or_404(Student, id=id)
+            serializer = StudentRegisterSerializer(student)
+            data['student'] = serializer.data
+            return Response(data=data)
+        return Response({"success":False,
+                         "message": "Student topilmadi"},status.HTTP_404_NOT_FOUND)
+ 
     
 
 
@@ -76,4 +83,10 @@ class StudentRegisterView(APIView):
                     'student':student_serializerr.data
                 })
         return Response({"error": 'Validation fieled'},status.HTTP_400_BAD_REQUEST)
+    def delete(self,request,id):
+        student = get_object_or_404(Student,id=id)
+        student.delete()
+        return Response({
+            "message": "Student o'chirildi"
+        },status.HTTP_404_NOT_FOUND)
         

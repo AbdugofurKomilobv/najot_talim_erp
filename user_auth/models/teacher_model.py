@@ -26,7 +26,7 @@ class Departments(BaseModel):
 class Teacher(BaseModel):
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='user')
     departments=models.ManyToManyField(Departments ,related_name="get_department")
-    course=models.ManyToManyField(Course,related_name="get_course", blank=True,null=True)
+    course=models.ManyToManyField(Course,related_name="get_course", blank=True)
     descriptions=models.CharField(max_length=500,blank=True,null=True)
 
 

@@ -9,10 +9,33 @@ from django.contrib.auth.hashers import make_password
 
 
 
+
+ 
 class StudentGroupSerializer(serializers.ModelSerializer):
-     class Meta:
-          model = GroupStudent
-          fields = ('id','title','course')
+    teacher = serializers.SerializerMethodField()
+    course = serializers.SerializerMethodField()
+
+
+  
+    class Meta:
+        model = GroupStudent
+        fields = ['id','title','course','teacher','created','updated','table','start_date','end_date','descriptions']
+
+    def get_teacher(self,obj):
+            if obj.teacher.exists():
+                return [teacher.user.username for teacher in obj.teacher.all()]
+            return ['Xozirda ustoz qidirlmoqda..']
+    def get_course(self,obj):
+          if obj.course:
+               return [obj.course.title]
+          return ['Kurs biriktirilmagan']
+ 
+    
+
+         
+        
+ 
+ 
 class UserShortSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -21,7 +44,7 @@ class UserShortSerializer(serializers.ModelSerializer):
 class StudentRegisterSerializer(serializers.ModelSerializer):
     group = StudentGroupSerializer(many = True)
     user = UserShortSerializer(read_only = True)
-    class Meta():
+    class Meta:
         model = Student
         fields = ('id','user','group','is_line','descriptions')
 
