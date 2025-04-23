@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from django.contrib.auth import authenticate
-from rest_framework.response import Response
+
 from ..models import *
 
 from django.contrib.auth.hashers import make_password
