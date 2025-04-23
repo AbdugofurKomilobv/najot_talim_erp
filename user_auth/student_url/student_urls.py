@@ -12,7 +12,8 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
  
      path('student_register/',StudentRegisterView.as_view()),
-     path('student_register/<int:id>/',StudentRegisterDetailView.as_view())
+     path('student_register/<int:id>/',StudentRegisterDetailView.as_view()),
+
      
      
 ]

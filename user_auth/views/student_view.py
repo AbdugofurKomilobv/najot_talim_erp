@@ -90,3 +90,4 @@ class StudentRegisterDetailView(APIView):
             "message": "Student o'chirildi"
         },status.HTTP_404_NOT_FOUND)
         
+

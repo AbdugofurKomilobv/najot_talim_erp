@@ -75,3 +75,4 @@ class StudentUserSerializer(serializers.ModelSerializer):
 class StudentPostSerializer(serializers.Serializer):
      user = StudentUserSerializer()
      student = StudentRSerializer()
+
