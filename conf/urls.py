@@ -31,7 +31,7 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
    path('admin/', admin.site.urls),
-    # User authentication
+    # User authenticatio
    
    path('/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     # swagger
@@ -46,7 +46,7 @@ urlpatterns = [
     path('otp/',include('user_auth.otp_urls')),
     path('register_login_user/',include('user_auth.register_login_urls')),
 
-
+    path("student_list/",include("student.student_list_urls")),
 
     path('student_group/',include('group.group_urls')),
     path('student_group_rooms/',include('group.rooms_urls')),

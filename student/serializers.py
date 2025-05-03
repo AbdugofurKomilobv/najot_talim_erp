@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from models import *
+from student.student_l_models import *
 
 
 
 class StudentListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = StudentListModel()
-        fields = "__all__"
+        model = StudentListModel
+        fields = ('student', 'group', 'date', 'is_present', 'arrival_time', 'izox')
