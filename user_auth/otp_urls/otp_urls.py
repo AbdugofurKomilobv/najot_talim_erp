@@ -1,7 +1,7 @@
 from django.urls import path
 
 from ..views import *
-
+from  ..views import PhoneSendOTP, VerifySms
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -12,6 +12,4 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
     path('post_phone_send_otp/',PhoneSendOTP.as_view()),
     path('post_phone_verifay_otp/',VerifySms.as_view()),
-
-     
 ]
