@@ -2,6 +2,10 @@ from django.urls import path
 
 from ..views import *
 from  ..views import PhoneSendOTP, VerifySms
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
