@@ -7,15 +7,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
 
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
 
 # user_auth urls
 urlpatterns = [
