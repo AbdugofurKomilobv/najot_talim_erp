@@ -12,6 +12,11 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 # user_auth urls
 urlpatterns = [
     path('post_phone_send_otp/',PhoneSendOTP.as_view()),
